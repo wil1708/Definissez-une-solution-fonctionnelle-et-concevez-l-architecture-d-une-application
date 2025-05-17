@@ -1,7 +1,7 @@
 .utilisateur-actif {
-    font-size: 10px; /* ✅ Très petit */
-    color: #b0b0b0; /* ✅ Gris clair pour un effet subtil */
-    font-style: italic; /* ✅ Optionnel pour une touche élégante */
+    font-size: 10px;
+    color: #b0b0b0; 
+    font-style: italic;
 }
 
 .chat-container {
@@ -22,23 +22,23 @@
     height: 300px;
 }
 
-/* ✅ Inversion correcte de l’alignement */
+/* Inversion correcte de l’alignement */
 .message {
     display: flex;
     width: 100%;
 }
 
-/* ✅ Messages de l'utilisateur actif (à gauche) */
+/* Messages de l'utilisateur actif (à gauche) */
 .message-left {
     justify-content: flex-start;
 }
 
-/* ✅ Messages des autres utilisateurs (à droite) */
+/* Messages des autres utilisateurs (à droite) */
 .message-right {
     justify-content: flex-end;
 }
 
-/* ✅ Style des messages */
+/* Style des messages */
 .message-card {
     max-width: 60%;
     padding: 10px;
@@ -57,9 +57,11 @@
     font-size: 16px;
 }
 
-.message-date {
-    font-size: 12px;
+.message-time {
+    font-size: 10px;
     color: gray;
+    display: block; 
+    margin-top: 4px;
 }
 
 .message-input {

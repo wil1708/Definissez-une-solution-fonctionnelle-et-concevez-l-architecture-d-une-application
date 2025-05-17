@@ -37,7 +37,12 @@ public class MessageSynchrone {
     public String getContenu() {
         return contenu;
     }
-
+    public Long getId() {
+        return id;
+    }
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
+    }
 
 
 }

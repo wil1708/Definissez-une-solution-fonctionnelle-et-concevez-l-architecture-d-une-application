@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   })
 
 export class ChatService {
-    
+
     private messagesSubject = new BehaviorSubject<MessageSynchrone[]>([]);
     messages$ = this.messagesSubject.asObservable();
     private selectedUserId = new BehaviorSubject<number>(1); // Par défaut, Client ID = 1
@@ -27,9 +27,7 @@ export class ChatService {
 
     sendMessage(content: string) {
         const userId = this.selectedUserId.value;
-        const messagePayload = { utilisateur: { id: userId }, contenu: content };
 
-    console.log('📢 Message envoyé:', JSON.stringify(messagePayload));
         this.http.post<MessageSynchrone>(`http://localhost:8080/discussions/1/messages`, { utilisateur: { id: userId }, contenu: content })
             .subscribe(newMessage => {
                 const messages = this.messagesSubject.value;

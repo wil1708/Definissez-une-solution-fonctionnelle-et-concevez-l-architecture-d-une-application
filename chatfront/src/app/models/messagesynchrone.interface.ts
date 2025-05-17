@@ -1,7 +1,7 @@
 export interface MessageSynchrone {
     id: number;
     contenu: string;
-    dateCreation: string; // Using `string` since dates are received as ISO format
+    dateCreation: Date;
     utilisateur: {
         id: number;
         nom: string;

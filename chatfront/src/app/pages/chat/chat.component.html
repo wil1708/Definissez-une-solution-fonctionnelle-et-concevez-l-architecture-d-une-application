@@ -10,7 +10,7 @@
                 <mat-card class="message-card">
                     <mat-card-content>
                         <p class="message-content"><strong>{{ msg.utilisateur?.id === 1 ? 'Client' : 'Support' }}:</strong> {{ msg.contenu }}</p>
-                        <small class="message-date">{{ msg.dateCreation | date:'short' }}</small>
+                        <small class="message-time">{{ msg.dateCreation | date:'dd/MM/yyyy HH:mm' }}</small>
                     </mat-card-content>
                 </mat-card>
             </div>
