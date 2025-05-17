@@ -1,6 +1,8 @@
 package com.yourcaryourway.chatback.controllers;
 
+import com.yourcaryourway.chatback.entities.Discussion;
 import com.yourcaryourway.chatback.entities.MessageSynchrone;
+import com.yourcaryourway.chatback.repositories.DiscussionRepository;
 import com.yourcaryourway.chatback.repositories.MessageSynchroneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ import java.util.List;
 public class DiscussionController {
     @Autowired
     private MessageSynchroneRepository messageSynchroneRepository;
+    @Autowired
+    private DiscussionRepository discussionRepository;
 
     @GetMapping("/{discussionId}/messages")
     public List<MessageSynchrone> getMessages(@PathVariable Long discussionId) {
@@ -22,7 +26,14 @@ public class DiscussionController {
     @PostMapping("/{discussionId}/messages")
     public MessageSynchrone sendMessage(@PathVariable Long discussionId, @RequestBody MessageSynchrone message) {
         message.setDateCreation(LocalDateTime.now());
+
+        Discussion discussion = discussionRepository.findById(discussionId)
+                .orElseThrow(() -> new RuntimeException("Discussion non trouvée !"));
+        message.setDiscussion(discussion);
+
         return messageSynchroneRepository.save(message);
     }
+
+
 }
 

@@ -1,0 +1,40 @@
+<mat-card class="chat-container">
+    <mat-card-header>
+        <mat-card-title>
+            <p class="utilisateur-actif">Utilisateur actif: {{ selectedUserId$ | async }}</p>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <!-- ✅ Boîte de dialogue pour le chat -->
+        <div class="chat-box">
+            <div *ngFor="let msg of messages$ | async" 
+                class="message" 
+                [ngClass]="{ 'message-left': msg.utilisateur?.id === (selectedUserId$ | async), 'message-right': msg.utilisateur?.id !== (selectedUserId$ | async) }">
+                <mat-card class="message-card">
+                    <mat-card-content>
+                        <p class="message-content"><strong>{{ msg.utilisateur?.id === 1 ? 'Client' : 'Support' }}:</strong> {{ msg.contenu }}</p>
+                        <small class="message-date">{{ msg.dateCreation | date:'short' }}</small>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <!-- ✅ Zone de saisie avec Material Design -->
+    <mat-card-actions class="message-input">
+        <mat-form-field appearance="fill" class="input-field">
+            <mat-label>Écris ton message ici...</mat-label>
+            <input matInput #msgInput type="text">
+        </mat-form-field>
+        <button mat-icon-button (click)="sendMessage(msgInput.value); msgInput.value=''">
+            <mat-icon>send</mat-icon>
+        </button>
+    </mat-card-actions>
+
+    <!-- ✅ Boutons de sélection d'utilisateur -->
+    <mat-card-actions class="user-selection">
+        <button mat-raised-button color="primary" (click)="switchUser(1)">Client</button>
+        <button mat-raised-button color="accent" (click)="switchUser(2)">Support</button>
+    </mat-card-actions>
+</mat-card>
