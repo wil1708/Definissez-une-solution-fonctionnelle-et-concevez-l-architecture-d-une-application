@@ -1,13 +1,9 @@
+<img src="assets/yourcaryourway.png" alt="Mon image">
 <mat-card class="chat-container">
-    <mat-card-header>
-        <mat-card-title>
-            <p class="utilisateur-actif">Utilisateur actif: {{ selectedUserId$ | async }}</p>
-        </mat-card-title>
-    </mat-card-header>
 
     <mat-card-content>
-        <!-- ✅ Boîte de dialogue pour le chat -->
-        <div class="chat-box">
+        <!-- Boîte de dialogue pour le chat -->
+        <div #chatBox class="chat-box">
             <div *ngFor="let msg of messages$ | async" 
                 class="message" 
                 [ngClass]="{ 'message-left': msg.utilisateur?.id === (selectedUserId$ | async), 'message-right': msg.utilisateur?.id !== (selectedUserId$ | async) }">
@@ -21,7 +17,7 @@
         </div>
     </mat-card-content>
 
-    <!-- ✅ Zone de saisie avec Material Design -->
+    <!-- Zone de saisie -->
     <mat-card-actions class="message-input">
         <mat-form-field appearance="fill" class="input-field">
             <mat-label>Écris ton message ici...</mat-label>
@@ -32,7 +28,7 @@
         </button>
     </mat-card-actions>
 
-    <!-- ✅ Boutons de sélection d'utilisateur -->
+    <!-- Boutons de sélection d'utilisateur -->
     <mat-card-actions class="user-selection">
         <button mat-raised-button color="primary" (click)="switchUser(1)">Client</button>
         <button mat-raised-button color="accent" (click)="switchUser(2)">Support</button>

@@ -3,7 +3,6 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { importProvidersFrom } from '@angular/core';
 
-// ✅ Import des modules Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

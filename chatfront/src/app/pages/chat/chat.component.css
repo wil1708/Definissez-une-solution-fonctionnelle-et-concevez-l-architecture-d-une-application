@@ -1,7 +1,9 @@
 .utilisateur-actif {
-    font-style: italic;
-    color: #b0b0b0;
+    font-size: 10px; /* ✅ Très petit */
+    color: #b0b0b0; /* ✅ Gris clair pour un effet subtil */
+    font-style: italic; /* ✅ Optionnel pour une touche élégante */
 }
+
 .chat-container {
     max-width: 600px;
     margin: auto;
@@ -68,4 +70,8 @@
 
 .input-field {
     flex: 1;
+}
+img {
+    display: block;
+    margin: auto;
 }

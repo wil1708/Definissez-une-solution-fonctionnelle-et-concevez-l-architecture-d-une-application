@@ -8,10 +8,12 @@ import { Injectable } from '@angular/core';
   })
 
 export class ChatService {
+    
     private messagesSubject = new BehaviorSubject<MessageSynchrone[]>([]);
     messages$ = this.messagesSubject.asObservable();
     private selectedUserId = new BehaviorSubject<number>(1); // Par défaut, Client ID = 1
     selectedUserId$: Observable<number> = this.selectedUserId.asObservable();
+
     constructor(private http: HttpClient) {
         this.loadMessages(1); // Chargement des messages pour Discussion ID = 1
     }
